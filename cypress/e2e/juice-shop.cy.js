@@ -16,6 +16,7 @@ describe("Juice-shop scenarios", () => {
       // Click Log in
       // Click Account button
       // Validate that "demo" account name appears in the menu sections
+      //test test
     });
 
     it("Registration", () => {
