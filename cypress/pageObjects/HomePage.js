@@ -105,6 +105,16 @@ export class HomePage extends BasePage {
   static get openReview(){
     return cy.get("[style='margin-right: 5px;']");
   }
+  static get validateDefaultAmmountOfCards(){
+    return cy.get("div.item-name");
+  }
+  static get openItemsPerPage(){
+    return cy.get("[role='combobox']");
+  }
+  static get changeItemsPerPageTo24(){
+    return cy.get("[class='mat-option-text']");
+  }
+
   
 
   
