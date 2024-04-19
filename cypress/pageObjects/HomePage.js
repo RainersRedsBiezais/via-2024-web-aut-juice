@@ -69,6 +69,10 @@ export class HomePage extends BasePage {
   static get validateLemonJuiceProductCard(){
     return cy.get("[class='container mat-typography']");
   }
+  static get setLemonJuiceProductCardInMultipleCards(){
+    return cy.get("[src='assets/public/images/products/lemon_juice.jpg']");
+  }
+
 
   
   
