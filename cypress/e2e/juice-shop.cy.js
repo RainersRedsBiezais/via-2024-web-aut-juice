@@ -92,20 +92,31 @@ describe("Juice-shop scenarios", () => {
       // Validate that the card (should) contains "Sour but full of vitamins."
       HomePage.validateLemonJuiceProductCard.contains("Sour but full of vitamins.");
     });
-    // Select a product card - Lemon Juice (500ml)
-    // Validate that the card (should) contains "Sour but full of vitamins."
 
     // Create scenario - Search 500ml and validate cards
-    // Click on search icon
-    // Search for 500ml
-    // Select a product card - Eggfruit Juice (500ml)
-    // Validate that the card (should) contains "Now with even more exotic flavour."
-    // Close the card
-    // Select a product card - Lemon Juice (500ml)
-    // Validate that the card (should) contains "Sour but full of vitamins."
-    // Close the card
-    // Select a product card - Strawberry Juice (500ml)
-    // Validate that the card (should) contains "Sweet & tasty!"
+    it.only("Search 500ml and validate cards", () => {
+      // Click on search icon
+      HomePage.navbarSearchBar.click();
+      // Search for 500ml
+      HomePage.setNavbarSearchBar.type("500ml").type('{enter}');
+      // Select a product card - Eggfruit Juice (500ml)
+      HomePage.setEggFruitJuiceProductCardInMultipleCards.click();
+      // Validate that the card (should) contains "Now with even more exotic flavour."
+      HomePage.validateEggFruitJuiceProductCard.contains("Now with even more exotic flavour.");
+      // Close the card
+      HomePage.closeCardButton.click();
+      // Select a product card - Lemon Juice (500ml)
+      HomePage.setLemonJuiceProductCardInMultipleCards.click();
+      // Validate that the card (should) contains "Sour but full of vitamins."
+      HomePage.validateLemonJuiceProductCard.contains("Sour but full of vitamins.");
+      // Close the card
+      HomePage.closeCardButton.click();
+      // Select a product card - Strawberry Juice (500ml)
+      HomePage.setStrawberryJuiceProductCardInMultipleCards.click();
+      // Validate that the card (should) contains "Sweet & tasty!"
+      HomePage.validateStrawberryJuiceProductCard.contains("Sweet & tasty!");
+
+    });
 
     // Create scenario - Read a review
     // Click on search icon

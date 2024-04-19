@@ -72,7 +72,22 @@ export class HomePage extends BasePage {
   static get setLemonJuiceProductCardInMultipleCards(){
     return cy.get("[src='assets/public/images/products/lemon_juice.jpg']");
   }
-
+  static get setEggFruitJuiceProductCardInMultipleCards(){
+    return cy.get("[src='assets/public/images/products/eggfruit_juice.jpg']");
+  }
+  static get validateEggFruitJuiceProductCard(){
+    return cy.get("[class='container mat-typography']");
+  }
+  static get closeCardButton(){
+    return cy.get("[class='mat-focus-indicator close-dialog buttons mat-stroked-button mat-button-base']");
+  }
+  static get setStrawberryJuiceProductCardInMultipleCards(){
+    return cy.get("[src='assets/public/images/products/strawberry_juice.jpeg']");
+  }
+  static get validateStrawberryJuiceProductCard(){
+    return cy.get("[class='container mat-typography']");
+  }
+  
 
   
   
