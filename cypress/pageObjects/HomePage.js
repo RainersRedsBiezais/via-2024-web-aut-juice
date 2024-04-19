@@ -63,7 +63,7 @@ export class HomePage extends BasePage {
   static get setNavbarSearchBar(){
     return cy.get("[id='mat-input-0']");
   }
-  static get setLemonJuiceProductCard(){
+  static get setProductCardSingle(){
     return cy.get("[class='item-name']");
   }
   static get validateLemonJuiceProductCard(){
@@ -87,6 +87,30 @@ export class HomePage extends BasePage {
   static get validateStrawberryJuiceProductCard(){
     return cy.get("[class='container mat-typography']");
   }
+  static get setOWASPJuiceShopFacemask(){
+    return cy.get("[class='mat-card-image img-responsive img-thumbnail']");
+  }
+  static get setOpenReviewOWASPJuiceShopFacemask(){
+    return cy.get("[style='margin-right: 5px;']");
+  }
+  static get validateReview(){
+    return cy.get("[class='comment ng-star-inserted']");
+  }
+  static get setReview(){
+    return cy.get("[cols='50']");
+  }
+  static get submitButton(){
+    return cy.get("[style='margin-bottom: 5px; margin-top: 5px; margin-left: 5px; display: block;']");
+  }
+  static get openReview(){
+    return cy.get("[style='margin-right: 5px;']");
+  }
+  
+
+  
+  
+
+  
   
 
   
