@@ -1,4 +1,5 @@
 import { HomePage } from "../pageObjects/HomePage";
+import { BasePage } from "../pageObjects/basePage";
 
 describe("Juice-shop scenarios", () => {
   context("Without auto login", () => {
@@ -10,32 +11,56 @@ describe("Juice-shop scenarios", () => {
 
     it("Login", () => {
       // Click Account button
+      HomePage.navbarAccountButton.click();
       // Click Login button
+      HomePage.navbarLoginButton.click();
       // Set email value to "demo"
+      HomePage.setEmail.type("demo");
       // Set password value to "demo"
+      HomePage.setPassword.type("demo");
       // Click Log in
+      HomePage.loginButton.click();
       // Click Account button
-      // Validate that "demo" account name appears in the menu sections
-      //test test
+      HomePage.accountButton.click();
+      // Validate that "demo" account name appears in the menu section
+      HomePage.validateDemoInAccountName.contains("demo");
     });
 
-    it("Registration", () => {
+    it.only("Registration", () => {
       // Click Account button
+      HomePage.navbarAccountButton.click();
       // Login button
+      HomePage.navbarLoginButton.click();
       // Click "Not yet a customer?"
+      HomePage.notYetACustomer.click();
       // Find - how to generate random number in JS
+      var randomNumber = Math.floor(Math.random() * 10000) + 1;
       // Use that number to genarate unique email address, e.g.: email_7584@ebox.com
+      var emailAddress = "email_" + randomNumber + "@ebox.com";
       // Save that email address to some variable
+      var uniqueEmail = emailAddress;
+      HomePage.setEmailInUserRegistration.type(uniqueEmail);
       // Fill in password field and repeat password field with same password
+      HomePage.setPasswordInUserRegistration.type("Password123");
+      HomePage.setRepeatPasswordInUserRegistration.type("Password123");
       // Click on Security Question menu
+      HomePage.securityQuestionButton.click();
       // Select  "Name of your favorite pet?"
+      HomePage.setSecurityQuestion.click();
       // Fill in answer
+      HomePage.setSecurityQuestionAnswer.type("Pedro");
       // Click Register button
+      HomePage.registerButton.click();
       // Set email value to previously created email
+      HomePage.setEmail.type(uniqueEmail);
       // Set password value to previously used password value
+      HomePage.setPassword.type("Password123");
       // Click login button
+      HomePage.loginButton.click();
       // Click Account button
+      HomePage.accountButton.click();
       // Validate that account name (with previously created email address) appears in the menu section
+      HomePage.validateDemoInAccountName.contains(uniqueEmail);
     });
   });
 
