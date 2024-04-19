@@ -15,7 +15,7 @@ describe("Juice-shop scenarios", () => {
       // Set password value to "demo"
       // Click Log in
       // Click Account button
-      // Validate that "demo" account name appears in the menu section
+      // Validate that "demo" account name appears in the menu sections
     });
 
     it("Registration", () => {
