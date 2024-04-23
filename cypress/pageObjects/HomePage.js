@@ -114,6 +114,118 @@ export class HomePage extends BasePage {
   static get changeItemsPerPageTo24(){
     return cy.get("[class='mat-option-text']");
   }
+  static get addToBasketButton(){
+    return cy.get("[aria-label='Add to Basket']");
+  }
+  static get basketButton(){
+    return cy.get("[routerlink='/basket']");
+  }
+  static get checkoutButton(){
+    return cy.get("[id='checkoutButton']");
+  }
+  static get circleButton(){
+    return cy.get("[class='mat-radio-inner-circle']");
+  }
+  static get continueButton(){
+    return cy.get("[class='mat-focus-indicator btn btn-next mat-button mat-raised-button mat-button-base mat-primary ng-star-inserted']");
+  }
+  static get circleButtonStandardDelivery(){
+    return cy.get("[class='mat-radio-inner-circle']");
+  }
+  static get deliveryOptionsList(){
+    return cy.get(".mat-table");
+  }
+  static get continueButton2(){
+    return cy.get("[aria-label='Proceed to delivery method selection']");
+  }
+  static get paymentCardList(){
+    return cy.get(".mat-row");
+  }
+  static get continueButton3(){
+    return cy.get("[class='mat-focus-indicator btn nextButton mat-button mat-raised-button mat-button-base mat-primary']");
+  }
+  static get completeYourPurchaseButton(){
+    return cy.get("[aria-label='Complete your purchase']");
+  }
+  static get validateConfirmation(){
+    return cy.get("[class='confirmation']");
+  }
+  static get validateConfirmation(){
+    return cy.get("[class='confirmation']");
+  }
+  static get ordersAndPaymentButton(){
+    return cy.get(".mat-menu-item");
+  }
+  static get addNewAddressButton(){
+    return cy.get("[class='mat-focus-indicator btn btn-new-address mat-button mat-raised-button mat-button-base mat-primary']");
+  }
+  static get setCountry(){
+    return cy.get("#mat-input-1")
+  }
+  static get setName(){
+    return cy.get("#mat-input-2")
+  }
+  static get setMobileNumber(){
+    return cy.get("#mat-input-3")
+  }
+  static get setZipCode(){
+    return cy.get("#mat-input-4")
+  }
+  static get setAdress(){
+    return cy.get("[id='address']")
+  }
+  static get setCity(){
+    return cy.get("#mat-input-6")
+  }
+  static get setState(){
+    return cy.get("#mat-input-7")
+  }
+  static get submitButton2(){
+    return cy.get("[class='mat-focus-indicator mat-raised-button mat-button-base mat-primary']")
+  }
+  static get validateAddress(){
+    return cy.get("[class='mat-cell cdk-cell cdk-column-Name mat-column-Name ng-star-inserted']")
+  }
+  static get addNewCard(){
+    return cy.get("[id='mat-expansion-panel-header-0']")
+  }
+  static get addName(){
+    return cy.get("#mat-input-1")
+  }
+  static get addCardNumber(){
+    return cy.get("#mat-input-2")
+  }
+  static get addExpiryMonth(){
+    return cy.get("[class='mat-form-field-infix ng-tns-c22-14']")
+  }
+  static get expiryMonth(){
+    return cy.get('select').eq(0)
+  }
+  static get addExpiryYear(){
+    return cy.get("[class='mat-form-field-infix ng-tns-c22-14']")
+  }
+  static get expiryYear(){
+    return cy.get('select').eq(1)
+  }
+  static get submitButton3(){
+    return cy.get("[id='submitButton']")
+  }
+  static get validateCard(){
+    return cy.get("[class='mat-cell cdk-cell cdk-column-Name mat-column-Name ng-star-inserted']")
+  }
+
+  
+  
+
+
+
+
+
+
+
+  
+
+
 
   
 

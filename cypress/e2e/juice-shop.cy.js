@@ -149,7 +149,7 @@ describe("Juice-shop scenarios", () => {
       HomePage.validateReview.contains("Tastes like metal");
     });
     // Create scenario - Validate product card amount
-    it.only("Validate product card amount", () => {
+    it("Validate product card amount", () => {
       // Validate that the default amount of cards is 12
       HomePage.validateDefaultAmmountOfCards.should('have.length', 12);
       // Change items per page (at the bottom of page) to 24
@@ -166,48 +166,92 @@ describe("Juice-shop scenarios", () => {
 
 
     // Create scenario - Buy Girlie T-shirt
-    // Click on search icon
-    // Search for Girlie
-    // Add to basket "Girlie"
-    // Click on "Your Basket" button
-    // Create page object - BasketPage
-    // Click on "Checkout" button
-    // Create page object - SelectAddressPage
-    // Select address containing "United Fakedom"
-    // Click Continue button
-    // Create page object - DeliveryMethodPage
-    // Select delivery speed Standard Delivery
-    // Click Continue button
-    // Create page object - PaymentOptionsPage
-    // Select card that ends with "5678"
-    // Click Continue button
-    // Create page object - OrderSummaryPage
-    // Click on "Place your order and pay"
-    // Create page object - OrderCompletionPage
-    // Validate confirmation - "Thank you for your purchase!"
+    it("Buy Girlie T-shirt", () => {
+      // Click on search icon
+      HomePage.navbarSearchBar.click();
+      // Search for Girlie
+      HomePage.setNavbarSearchBar.type("Girlie").type('{enter}');
+      // Add to basket "Girlie"
+      HomePage.addToBasketButton.click();
+      // Click on "Your Basket" button
+      HomePage.basketButton.click();
+      // Create page object - BasketPage
+      // Click on "Checkout" button
+      HomePage.checkoutButton.click();
+      // Create page object - SelectAddressPage
+      // Select address containing "United Fakedom"
+      HomePage.circleButton.click();
+      // Click Continue button
+      HomePage.continueButton.click();
+      // Create page object - DeliveryMethodPage
+      // Select delivery speed Standard Delivery
+      HomePage.deliveryOptionsList.contains("Standard Delivery").click();
+      // Click Continue button
+      HomePage.continueButton2.click();
+      // Create page object - PaymentOptionsPage
+      // Select card that ends with "5678"
+      HomePage.paymentCardList.contains("5678").closest('mat-row').find('[class="mat-radio-label"]').click();
+      // Click Continue button
+      HomePage.continueButton3.click();
+      // Create page object - OrderSummaryPage
+      // Click on "Place your order and pay"
+      HomePage.completeYourPurchaseButton.click();
+      // Create page object - OrderCompletionPage
+      // Validate confirmation - "Thank you for your purchase!"
+      HomePage.validateConfirmation.contains("Thank you for your purchase!");
+    });
 
     // Create scenario - Add address
+    it("Add address", () => {
+      // Click on Account
+      HomePage.accountButton.click();
+      // Click on Orders & Payment
+      HomePage.ordersAndPaymentButton.contains("Orders & Payment").click();
+      // Click on My saved addresses
+      HomePage.ordersAndPaymentButton.contains("My saved addresses").click();
+      // Create page object - SavedAddressesPage
+      // Click on Add New Address
+      HomePage.addNewAddressButton.click();
+      // Create page object - CreateAddressPage
+      // Fill in the necessary information
+      HomePage.setCountry.click().type("Latvia");
+      HomePage.setName.click().type("Pedro");
+      HomePage.setMobileNumber.click().type("12345678");
+      HomePage.setZipCode.click().type("LV-4412");
+      HomePage.setAdress.click().type("Kļavu iela 24");
+      HomePage.setCity.click().type("Liepāja");
+      HomePage.setState.click().type("Liepājas novads");
+      // Click Submit button
+      HomePage.submitButton2.click();
+      // Validate that previously added address is visible
+      HomePage.validateAddress.contains("Pedro");
+  });
+  // Create scenario - Add payment option
+    it.only("Add payment option", () => {
     // Click on Account
+    HomePage.accountButton.click();
     // Click on Orders & Payment
-    // Click on My saved addresses
-    // Create page object - SavedAddressesPage
-    // Click on Add New Address
-    // Create page object - CreateAddressPage
-    // Fill in the necessary information
-    // Click Submit button
-    // Validate that previously added address is visible
-
-    // Create scenario - Add payment option
-    // Click on Account
-    // Click on Orders & Payment
+    HomePage.ordersAndPaymentButton.contains("Orders & Payment").click();
     // Click on My payment options
+    HomePage.ordersAndPaymentButton.contains("My Payment Options").click();
     // Create page object - SavedPaymentMethodsPage
     // Click Add new card
+    HomePage.addNewCard.click();
     // Fill in Name
+    HomePage.addName.type("Pedro");
     // Fill in Card Number
+    HomePage.addCardNumber.type("1234567899876543")
     // Set expiry month to 7
+    HomePage.addExpiryMonth.click();
+    HomePage.expiryMonth.select(6)
     // Set expiry year to 2090
+    HomePage.addExpiryYear.click();
+    HomePage.expiryYear.select(10)
     // Click Submit button
+    HomePage.submitButton3.click();
     // Validate that the card shows up in the list
+    HomePage.validateCard.contains("Pedro");
+
+  });
   });
 });
