@@ -1,5 +1,17 @@
+import { BasketPage } from "../pageObjects/BasketPage";
 import { HomePage } from "../pageObjects/HomePage";
-import { BasePage } from "../pageObjects/basePage";
+import { LoginPage } from "../pageObjects/LoginPage";
+import { RegistrationPage } from "../pageObjects/RegistrationPage";
+import { SelectAddressPage } from "../pageObjects/SelectAddressPage";
+import { DeliveryMethodPage } from "../pageObjects/DeliveryMethodPage";
+import { PaymentOptionsPage } from "../pageObjects/PaymentOptionsPage";
+import { OrdersummaryPage } from "../pageObjects/OrdersummaryPage";
+import { OrderCompletionPage } from "../pageObjects/OrderCompletionPage";
+import { SavedAddressesPage } from "../pageObjects/SavedAddressesPage";
+import { CreateAddressesPage } from "../pageObjects/CreateAddressesPage";
+import { SavedPaymentMethodsPage } from "../pageObjects/SavedPaymentMethodsPage";
+
+
 
 describe("Juice-shop scenarios", () => {
   context("Without auto login", () => {
@@ -11,56 +23,56 @@ describe("Juice-shop scenarios", () => {
 
     it("Login", () => {
       // Click Account button
-      HomePage.navbarAccountButton.click();
+      LoginPage.navbarAccountButton.click();
       // Click Login button
-      HomePage.navbarLoginButton.click();
+      LoginPage.navbarLoginButton.click();
       // Set email value to "demo"
-      HomePage.setEmail.type("demo");
+      LoginPage.setEmail.type("demo");
       // Set password value to "demo"
-      HomePage.setPassword.type("demo");
+      LoginPage.setPassword.type("demo");
       // Click Log in
-      HomePage.loginButton.click();
+      LoginPage.loginButton.click();
       // Click Account button
-      HomePage.accountButton.click();
+      LoginPage.accountButton.click();
       // Validate that "demo" account name appears in the menu section
-      HomePage.validateDemoInAccountName.contains("demo");
+      LoginPage.validateDemoInAccountName.contains("demo");
     });
 
     it("Registration", () => {
       // Click Account button
-      HomePage.navbarAccountButton.click();
+      LoginPage.navbarAccountButton.click();
       // Login button
-      HomePage.navbarLoginButton.click();
+      LoginPage.navbarLoginButton.click();
       // Click "Not yet a customer?"
-      HomePage.notYetACustomer.click();
+      RegistrationPage.notYetACustomer.click();
       // Find - how to generate random number in JS
       var randomNumber = Math.floor(Math.random() * 10000) + 1;
       // Use that number to genarate unique email address, e.g.: email_7584@ebox.com
       var emailAddress = "email_" + randomNumber + "@ebox.com";
       // Save that email address to some variable
       var uniqueEmail = emailAddress;
-      HomePage.setEmailInUserRegistration.type(uniqueEmail);
+      RegistrationPage.setEmailInUserRegistration.type(uniqueEmail);
       // Fill in password field and repeat password field with same password
-      HomePage.setPasswordInUserRegistration.type("Password123");
-      HomePage.setRepeatPasswordInUserRegistration.type("Password123");
+      RegistrationPage.setPasswordInUserRegistration.type("Password123");
+      RegistrationPage.setRepeatPasswordInUserRegistration.type("Password123");
       // Click on Security Question menu
-      HomePage.securityQuestionButton.click();
+      RegistrationPage.securityQuestionButton.click();
       // Select  "Name of your favorite pet?"
-      HomePage.setSecurityQuestion.click();
+      RegistrationPage.setSecurityQuestion.click();
       // Fill in answer
-      HomePage.setSecurityQuestionAnswer.type("Pedro");
+      RegistrationPage.setSecurityQuestionAnswer.type("Pedro");
       // Click Register button
-      HomePage.registerButton.click();
+      RegistrationPage.registerButton.click();
       // Set email value to previously created email
-      HomePage.setEmail.type(uniqueEmail);
+      LoginPage.setEmail.type(uniqueEmail);
       // Set password value to previously used password value
-      HomePage.setPassword.type("Password123");
+      LoginPage.setPassword.type("Password123");
       // Click login button
-      HomePage.loginButton.click();
+      LoginPage.loginButton.click();
       // Click Account button
-      HomePage.accountButton.click();
+      LoginPage.accountButton.click();
       // Validate that account name (with previously created email address) appears in the menu section
-      HomePage.validateDemoInAccountName.contains(uniqueEmail);
+      LoginPage.validateDemoInAccountName.contains(uniqueEmail);
     });
   });
 
@@ -172,85 +184,85 @@ describe("Juice-shop scenarios", () => {
       // Search for Girlie
       HomePage.setNavbarSearchBar.type("Girlie").type('{enter}');
       // Add to basket "Girlie"
-      HomePage.addToBasketButton.click();
+      BasketPage.addToBasketButton.click();
       // Click on "Your Basket" button
-      HomePage.basketButton.click();
+      BasketPage.basketButton.click();
       // Create page object - BasketPage
       // Click on "Checkout" button
-      HomePage.checkoutButton.click();
+      BasketPage.checkoutButton.click();
       // Create page object - SelectAddressPage
       // Select address containing "United Fakedom"
-      HomePage.circleButton.contains("United Fakedom").click();
+      SelectAddressPage.circleButton.contains("United Fakedom").click();
       // Click Continue button
-      HomePage.continueButton.click();
+      SelectAddressPage.continueButton.click();
       // Create page object - DeliveryMethodPage
       // Select delivery speed Standard Delivery
-      HomePage.deliveryOptionsList.contains("Standard Delivery").click();
+      DeliveryMethodPage.deliveryOptionsList.contains("Standard Delivery").click();
       // Click Continue button
-      HomePage.continueButton2.click();
+      DeliveryMethodPage.continueButton2.click();
       // Create page object - PaymentOptionsPage
       // Select card that ends with "5678"
-      HomePage.paymentCardList.contains("5678").closest('mat-row').find('[class="mat-radio-label"]').click();
+      PaymentOptionsPage.paymentCardList.contains("5678").closest('mat-row').find('[class="mat-radio-label"]').click();
       // Click Continue button
-      HomePage.continueButton3.click();
+      PaymentOptionsPage.continueButton3.click();
       // Create page object - OrderSummaryPage
       // Click on "Place your order and pay"
-      HomePage.completeYourPurchaseButton.click();
+      OrdersummaryPage.completeYourPurchaseButton.click();
       // Create page object - OrderCompletionPage
       // Validate confirmation - "Thank you for your purchase!"
-      HomePage.validateConfirmation.contains("Thank you for your purchase!");
+      OrderCompletionPage.validateConfirmation.contains("Thank you for your purchase!");
     });
 
     // Create scenario - Add address
     it("Add address", () => {
       // Click on Account
-      HomePage.accountButton.click();
+      LoginPage.accountButton.click();
       // Click on Orders & Payment
       HomePage.ordersAndPaymentButton.contains("Orders & Payment").click();
       // Click on My saved addresses
       HomePage.ordersAndPaymentButton.contains("My saved addresses").click();
       // Create page object - SavedAddressesPage
       // Click on Add New Address
-      HomePage.addNewAddressButton.click();
+      SavedAddressesPage.addNewAddressButton.click();
       // Create page object - CreateAddressPage
       // Fill in the necessary information
-      HomePage.setCountry.click().type("Latvia");
-      HomePage.setName.click().type("Pedro");
-      HomePage.setMobileNumber.click().type("12345678");
-      HomePage.setZipCode.click().type("LV-4412");
-      HomePage.setAdress.click().type("Kļavu iela 24");
-      HomePage.setCity.click().type("Liepāja");
-      HomePage.setState.click().type("Liepājas novads");
+      CreateAddressesPage.setCountry.click().type("Latvia");
+      CreateAddressesPage.setName.click().type("Pedro");
+      CreateAddressesPage.setMobileNumber.click().type("12345678");
+      CreateAddressesPage.setZipCode.click().type("LV-4412");
+      CreateAddressesPage.setAdress.click().type("Kļavu iela 24");
+      CreateAddressesPage.setCity.click().type("Liepāja");
+      CreateAddressesPage.setState.click().type("Liepājas novads");
       // Click Submit button
-      HomePage.submitButton2.click();
+      CreateAddressesPage.submitButton2.click();
       // Validate that previously added address is visible
-      HomePage.validateAddress.contains("Pedro");
+      CreateAddressesPage.validateAddress.contains("Pedro");
   });
   // Create scenario - Add payment option
     it("Add payment option", () => {
     // Click on Account
-    HomePage.accountButton.click();
+    LoginPage.accountButton.click();
     // Click on Orders & Payment
     HomePage.ordersAndPaymentButton.contains("Orders & Payment").click();
     // Click on My payment options
     HomePage.ordersAndPaymentButton.contains("My Payment Options").click();
     // Create page object - SavedPaymentMethodsPage
     // Click Add new card
-    HomePage.addNewCard.click();
+    SavedPaymentMethodsPage.addNewCard.click();
     // Fill in Name
-    HomePage.addName.type("Pedro");
+    SavedPaymentMethodsPage.addName.type("Pedro");
     // Fill in Card Number
-    HomePage.addCardNumber.type("1234567899876543")
+    SavedPaymentMethodsPage.addCardNumber.type("1234567899876543")
     // Set expiry month to 7
-    HomePage.addExpiryMonth.click();
-    HomePage.expiryMonth.select(6)
+    SavedPaymentMethodsPage.addExpiryMonth.click();
+    SavedPaymentMethodsPage.expiryMonth.select(6)
     // Set expiry year to 2090
-    HomePage.addExpiryYear.click();
-    HomePage.expiryYear.select(10)
+    SavedPaymentMethodsPage.addExpiryYear.click();
+    SavedPaymentMethodsPage.expiryYear.select(10)
     // Click Submit button
-    HomePage.submitButton3.click();
+    SavedPaymentMethodsPage.submitButton3.click();
     // Validate that the card shows up in the list
-    HomePage.validateCard.contains("Pedro");
+    SavedPaymentMethodsPage.validateCard.contains("Pedro");
 
   });
   });
