@@ -124,7 +124,7 @@ export class HomePage extends BasePage {
     return cy.get("[id='checkoutButton']");
   }
   static get circleButton(){
-    return cy.get("[class='mat-radio-inner-circle']");
+    return cy.get("[class='mat-row cdk-row ng-star-inserted']");
   }
   static get continueButton(){
     return cy.get("[class='mat-focus-indicator btn btn-next mat-button mat-raised-button mat-button-base mat-primary ng-star-inserted']");

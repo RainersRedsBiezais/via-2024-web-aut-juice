@@ -140,9 +140,9 @@ describe("Juice-shop scenarios", () => {
       // Select a product card - Raspberry Juice (1000ml)
       HomePage.setProductCardSingle.click()
       // Type in review - "Tastes like metal"
-      HomePage.setReview.click().type("Tastes like metal");
+      HomePage.setReview.click().wait(500).type("Tastes like metal");
       // Click Submit
-      HomePage.submitButton.click();
+      HomePage.submitButton.click().wait(500);
       // Click expand reviews button/icon (wait for reviews to appear)
       HomePage.openReview.click();
       // Validate review -  "Tastes like metal"
@@ -180,7 +180,7 @@ describe("Juice-shop scenarios", () => {
       HomePage.checkoutButton.click();
       // Create page object - SelectAddressPage
       // Select address containing "United Fakedom"
-      HomePage.circleButton.click();
+      HomePage.circleButton.contains("United Fakedom").click();
       // Click Continue button
       HomePage.continueButton.click();
       // Create page object - DeliveryMethodPage
@@ -227,7 +227,7 @@ describe("Juice-shop scenarios", () => {
       HomePage.validateAddress.contains("Pedro");
   });
   // Create scenario - Add payment option
-    it.only("Add payment option", () => {
+    it("Add payment option", () => {
     // Click on Account
     HomePage.accountButton.click();
     // Click on Orders & Payment
